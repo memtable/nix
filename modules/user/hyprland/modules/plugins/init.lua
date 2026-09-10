@@ -13,6 +13,7 @@ for _, spec in ipairs({
   -- { key = "darkwindow", module = "modules.plugins.darkwindow" },
   { key = "hyprglass", module = "modules.plugins.hyprglass" },
   { key = "hyprbars", module = "modules.plugins.hyprbars" },
+  { key = "hyprlight", module = "modules.plugins.hyprlight" },
 }) do
   local mod = require(spec.module)
   if mod then
