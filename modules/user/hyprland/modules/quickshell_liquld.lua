@@ -42,6 +42,7 @@ local layer_rules = {
   { name = "quickshell-control-center-footer-blur", namespace = "^quickshell:control-center-footer$", ignore_alpha = blur_cutoff.soft, rounding = 15 },
   { name = "quickshell-desktop-widgets-blur", namespace = "^quickshell:desktop-widget-(calendar|weather):.*", ignore_alpha = blur_cutoff.none },
   { name = "quickshell-menu-blur", namespace = "^quickshell:menu$", ignore_alpha = blur_cutoff.soft, blur_popups = true },
+  { name = "quickshell-notifications-blur", namespace = "^quickshell:notifications$", ignore_alpha = blur_cutoff.none, blur_popups = true, no_screen_share = false, rounding = 20 },
   { name = "quickshell-notification-popup-backdrop-blur", namespace = "^quickshell:notification-popup-backdrop$", ignore_alpha = blur_cutoff.none, blur_popups = true, no_screen_share = false , rounding = 15},
 }
 

@@ -202,7 +202,7 @@ hl.window_rule({
 hl.window_rule({
   name = "ws-spotify",
   match = {
-    class = "^(Spotify)$",
+    class = "^(spotify)$",
   },
   no_initial_focus = true,
   workspace = "5",
@@ -417,4 +417,28 @@ hl.window_rule({
   },
   float = true,
   rounding = 11,
+})
+
+hl.window_rule({
+  name = "assetto-content-manager",
+  match = {
+    class = "^(steam_app_244210)$",
+    title = "^(Content Manager)$",
+  },
+  float = true,
+  center = true,
+  size = { 1280, 800 },
+})
+
+hl.window_rule({
+  name = "assetto-race-engine",
+  match = {
+    class = "^(steam_app_244210)$",
+    title = "^(Assetto Corsa.*)$",
+  },
+  fullscreen = true,
+  monitor = "DP-1",
+  no_anim = true,
+  no_blur = true,
+  no_shadow = true,
 })

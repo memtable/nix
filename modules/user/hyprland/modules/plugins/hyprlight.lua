@@ -17,7 +17,7 @@ local function setup()
   hl.animation({
     leaf = "hyprlightOut",
     enabled = true,
-    speed = 6.0,
+    speed = 8,
     bezier = "easeOutCubic",
   })
 end
@@ -25,7 +25,7 @@ end
 return {
   config = {
     enable = true,
-    animate_workspacechange = false,
+    animate_workspacechange = true,
     animate_floating = true,
     only_on_monitor_change = false,
     keyboard_focus_animation = "illuminate",

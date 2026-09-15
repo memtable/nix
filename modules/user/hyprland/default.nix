@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 let
   link = config.lib.file.mkOutOfStoreSymlink;
@@ -47,29 +47,26 @@ in {
 
   xdg.configFile = {
     "hypr/hyprland.lua".source = link "${hyprDir}/hyprland.lua";
-    "hypr/hyprlandd.lua".source = link "${hyprDir}/hyprlandd.lua";
-    "hypr/module_lua".source = link "${hyprDir}/module_lua";
-    "hypr/hyprland.conf".source = link "${hyprDir}/hyprland.conf";
-    "hypr/hyprland_nested.conf".source = link "${hyprDir}/hyprland_nested.conf";
-    "hypr/hypridle.conf".source = link "${hyprDir}/hypridle.conf";
+    "hypr/hyprland_nested.lua".source = link "${hyprDir}/hyprland_nested.lua";
+    "hypr/lib.lua".source = link "${hyprDir}/lib.lua";
     "hypr/modules".source = link "${hyprDir}/modules";
   };
 
   home.sessionVariables = {
-    EWW_PRIMARY_MONITOR = "1";
-    MOZ_ENABLE_WAYLAND = "1";
-    XDG_SESSION_TYPE = "wayland";
-    QT_QPA_PLATFORM = "wayland";
-    LIBVA_DRIVER_NAME = "nvidia";
-    __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-    ELECTRON_OZONE_PLATFORM_HINT = "auto";
-    GBM_BACKEND = "nvidia-drm";
-    NVD_BACKEND = "direct";
-    QT_QPA_PLATFORMTHEME = "qt6ct";
-    XCURSOR_THEME = "macOS";
-    HYPRCURSOR_THEME = "macOS";
-    XCURSOR_SIZE = "24";
-    HYPRCURSOR_SIZE = "24";
+    EWW_PRIMARY_MONITOR = lib.mkDefault "1";
+    MOZ_ENABLE_WAYLAND = lib.mkDefault "1";
+    XDG_SESSION_TYPE = lib.mkDefault "wayland";
+    QT_QPA_PLATFORM = lib.mkDefault "wayland";
+    LIBVA_DRIVER_NAME = lib.mkDefault "nvidia";
+    __GLX_VENDOR_LIBRARY_NAME = lib.mkDefault "nvidia";
+    ELECTRON_OZONE_PLATFORM_HINT = lib.mkDefault "auto";
+    GBM_BACKEND = lib.mkDefault "nvidia-drm";
+    NVD_BACKEND = lib.mkDefault "direct";
+    QT_QPA_PLATFORMTHEME = lib.mkDefault "qt6ct";
+    XCURSOR_THEME = lib.mkDefault "macOS";
+    HYPRCURSOR_THEME = lib.mkDefault "macOS";
+    XCURSOR_SIZE = lib.mkDefault "24";
+    HYPRCURSOR_SIZE = lib.mkDefault "24";
   };
 
   wayland.windowManager.hyprland = {

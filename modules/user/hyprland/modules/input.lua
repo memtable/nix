@@ -5,7 +5,7 @@ hl.config({
     kb_model = "",
     kb_options = "grp:win_space_toggle,ctrl:nocaps",
     kb_rules = "",
-    follow_mouse = 0,
+    follow_mouse = 2,
     float_switch_override_focus = 0,
     accel_profile = "flat",
     force_no_accel = true,
@@ -26,6 +26,7 @@ hl.config({
   },
   cursor = {
     zoom_disable_aa = true,
+    no_warps = true,
   },
 })
 

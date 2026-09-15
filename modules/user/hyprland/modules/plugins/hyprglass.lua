@@ -50,8 +50,8 @@ local presets = {
     blur_iterations = 1,
     refraction_strength = 1.0,
     chromatic_aberration = 0.20,
-    fresnel_strength = 0.0,
-    specular_strength = 3.0,
+    fresnel_strength = 0.2,
+    specular_strength = 0.5,
     glass_opacity = 1.0,
     edge_thickness = 0.040,
     tint_color = 0xffffff0d,
@@ -111,28 +111,44 @@ local presets = {
 
   clear_s_curve = {
     inherits = "clear",
-    s_curve = 1.0,
+    s_curve = 0.2,
+  },
+
+  notification_buttons = {
+    inherits = "clear",
+    blur_strength = 0.6,
+    blur_iterations = 1,
+    dark = {
+      brightness = 1.0,
+      contrast = 1.2,
+      saturation = 1.0,
+      vibrancy = 0.0,
+      vibrancy_darkness = 0.0,
+      adaptive_dim = 0.30,
+      adaptive_boost = 0,
+    },
   },
 
   notification = {
     inherits = "clear",
-    blur_strength = 1.5,
+    blur_strength = 1.2,
     blur_iterations = 2,
-    tint_color = 0xffffff0a,
-    fresnel_strength = 0,
-    specular_strength = 0,
+    -- tint_color = 0x000000FF,
+    fresnel_strength = 0.2,
+    specular_strength = 0.5,
     lens_distortion = 1.0,
     refraction_strength = 0.8,
+    chromatic_aberration = 0.02,
     edge_thickness = 0.09,
-    s_curve = 0.0,
+    s_curve = 0.5,
     dark = {
       brightness = 1.0,
-      contrast = 1.0,
+      contrast = 1.2,
       saturation = 1.0,
       vibrancy = 0.0,
       vibrancy_darkness = 0.0,
-      adaptive_dim = 0.2,
-      adaptive_boost = 0.0,
+      adaptive_dim = 0.22,
+      adaptive_boost = 0.1,
     },
   },
 
@@ -225,14 +241,20 @@ local layers = {
     name = "quickshell:menu",
     preset = "menus",
     mask_threshold = 0.0,
-    rounding = 15,
+    rounding = 12,
     no_anim = true,
+  },
+  {
+    name = "quickshell:notifications",
+    preset = "notification",
+    mask_threshold = 0.005,
+    rounding = 20,
   },
   {
     name = "quickshell:notification-popup-backdrop",
     preset = "notification",
     mask_threshold = 0.01,
-    rounding = 15,
+    rounding = 20,
   },
   {
     name = "quickshell:toggle-knob-backdrop",
@@ -253,13 +275,19 @@ local layers = {
   },
   {
     name = "quickshell:notification-actions",
-    preset = "clear",
-    mask_threshold = 0.1,
+    preset = "notification_buttons",
+    mask_threshold = 0.001,
   },
   {
     name = "quickshell:notification-dismiss",
-    preset = "clear",
-    mask_threshold = 0.1,
+    preset = "notification_buttons",
+    mask_threshold = 0.001,
+  },
+  {
+    name = "quickshell:notification-center",
+    preset = "notification",
+    mask_threshold = 0.01,
+    rounding  = 0,
   },
 }
 
@@ -276,6 +304,7 @@ local function setup()
   hg.preset("menus", presets.menus)
   hg.preset("clear", presets.clear)
   hg.preset("clear_s_curve", presets.clear_s_curve)
+  hg.preset("notification_buttons", presets.notification_buttons)
   hg.preset("notification", presets.notification)
   hg.preset("darken", presets.darken)
 

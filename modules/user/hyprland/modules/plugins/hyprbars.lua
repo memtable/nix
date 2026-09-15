@@ -26,9 +26,9 @@ local buttons = {
   },
 }
 
--- for _, button in ipairs(buttons) do
---   hl.plugin.hyprbars.add_button(button)
--- end
+for _, button in ipairs(buttons) do
+  hl.plugin.hyprbars.add_button(button)
+end
 
 return {
   enabled = true,
@@ -45,7 +45,7 @@ return {
     text = "rgb(9a9a9a)",
   },
 
-  bar_text_align = "left",
+  bar_text_align = "center",
   bar_text_size = 13,
   bar_text_weight = 700,
   bar_text_font = "SF Pro Text",

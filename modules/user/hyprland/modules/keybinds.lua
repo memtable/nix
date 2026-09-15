@@ -114,6 +114,7 @@ bind_all({
   { main_mod .. " + ALT + v", hl.dsp.layout("fit visible") },
   { main_mod .. " + T", hl.dsp.layout("promote") },
   { main_mod .. " + D", hl.dsp.window.cycle_next({ floating = true }) },
+  { main_mod .. " +SHIFT + D", hl.dsp.window.cycle_next({ tiled = true }) },
   { main_mod .. " + F", hl.dsp.window.fullscreen() },
 })
 
@@ -218,6 +219,7 @@ mouse_bind(main_mod .. " + mouse:273", hl.dsp.window.resize())
 hl.config({
   binds = {
     scroll_event_delay = 0,
+    window_direction_monitor_fallback = false,
   },
 })
 
@@ -238,9 +240,11 @@ local function kbptr_cmd(args)
   return string.format([[hyprctl dispatch "hl.dsp.submap('reset')"; wl-kbptr %s; hyprctl dispatch "hl.dsp.submap('cursor')"]], args)
 end
 
--- Enter cursor submap and wake up analog polling:
+local madlion_mouse_cmd = "/home/drama/.local/bin/madlion-mouse run --preset uhjk --deadzone 0.0 --scroll-speed 60 --scroll-curve-exponent 4 --scroll-curve power --max-speed 2000 --curve power --curve-exponent 4"
+
+-- Enter cursor submap and launch analog mouse emulation:
 bind(main_mod .. " + Control_L", function()
-  hl.exec_cmd("/home/drama/.local/bin/madlion-mouse enable")
+  hl.exec_cmd("pkill -x madlion-mouse 2>/dev/null; " .. madlion_mouse_cmd .. " &")
   hl.dispatch(hl.dsp.submap("cursor"))
 end)
 
@@ -258,9 +262,9 @@ hl.define_submap("cursor", function()
     bind("CTRL + " .. k, function() end)
   end
 
-  -- Exit submap: put daemon in standby and release all buttons
+  -- Exit submap: stop mouse emulation
   local function exit_cursor()
-    hl.exec_cmd("/home/drama/.local/bin/madlion-mouse disable")
+    hl.exec_cmd("pkill -x madlion-mouse")
     hl.dispatch(hl.dsp.submap("reset"))
   end
 

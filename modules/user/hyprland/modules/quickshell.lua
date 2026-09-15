@@ -34,4 +34,32 @@ hl.layer_rule({
   no_anim = true,
 })
 
+hl.layer_rule({
+  name = "quickshell-notifications",
+  match = {
+    namespace = "^quickshell:notifications$",
+  },
+  blur = true,
+  ignore_alpha = 0,
+})
+
+hl.layer_rule({
+  name = "quickshell-notification-dismiss",
+  match = {
+    namespace = "^quickshell:notification-dismiss$",
+  },
+  no_anim = true,
+  -- animation = "fade",
+})
+
+hl.layer_rule({
+  name = "quickshell-notification-actions",
+  match = {
+    namespace = "^quickshell:notification-actions$",
+  },
+
+  no_anim = true,
+  -- animation = "fade",
+})
+
 hl.window_rule({ name = "quickshell-settings", match = { class = "^org\\.quickshell$", title = "^Settings$" }, float = true, rounding = 20, rounding_power = 3 })
