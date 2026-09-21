@@ -4,7 +4,7 @@ local function sh(cmd)
 end
 
 hl.bind(main_mod .. " + Z", sh([[notify-send --action="REPLY=Open" --action="dismiss=Mark As " "Alice" "Hey, are you free for a call? Notification description lorem ipsum dolor sit ament."]]))
-hl.bind(main_mod .. " + X", sh("pkill quickshell; quickshell"))
+hl.bind(main_mod .. " + X", sh("pkill quickshell; env MALLOC_CONF=\"background_thread:true,dirty_decay_ms:1000,muzzy_decay_ms:1000\" quickshell"))
 hl.bind(main_mod .. " + A", sh("qs ipc call shell toggleControlCenter"))
 hl.bind(main_mod .. " + N", sh("qs ipc call shell toggleNotificationCenter"))
 hl.bind(main_mod .. " + G", sh("qs ipc call shell toggleAudioMixer"))
