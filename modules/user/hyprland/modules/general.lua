@@ -4,15 +4,15 @@ hl.config({
     gaps_out = { top = 0, right = 5, bottom = 5, left = 5 },
     border_size = 1,
     col = {
-      active_border = "rgba(59595Bff)",
-      inactive_border = "rgba(59595Bff)",
+      active_border = "rgba(5E5E5Eff)",
+      inactive_border = "rgba(5E5E5Eff)",
     },
     resize_on_border = true,
     allow_tearing = true,
     layout = "dwindle",
   },
   decoration = {
-    rounding = 8,
+    rounding = 15,
     dim_special = 0.2,
     shadow = {
       enabled = true,

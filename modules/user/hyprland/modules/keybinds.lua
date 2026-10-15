@@ -42,7 +42,6 @@ bind_all({
   -- { "HOME", exec("hyprfreeze -a") },
   { main_mod .. " + SHIFT + C", exec("hyprpicker -a") },
   { main_mod .. " + slash", exec("/home/drama/.local/bin/madlion-gamepad toggle-gamepad") },
-  { main_mod .. " + SHIFT + M", hl.dsp.workspace.toggle_special("rmpc") },
 })
 
 -- hl.bind("CONTROL + W", function()
@@ -82,8 +81,8 @@ bind_all({
 bind_all({
   { main_mod .. " + E", exec("kitty --class " .. terminal .. "-yazi yazi") },
   { main_mod .. " + ALT + O", exec("kitty --class " .. terminal .. "-obsidian sh -c 'cd /mnt/hdd/Notes/Personal && nvim +\"autocmd BufEnter *.md ++once normal! G\" +ObsidianToday' & sleep 0.5; hyprctl dispatch setfloating") },
-  { main_mod .. " + Q", exec(terminal) },
-  { main_mod .. " + ALT + Q", exec("kitty -o shell=zsh") },
+  { main_mod .. " + ALT + Q", exec(terminal) },
+  { main_mod .. " + Q", exec("kitty -o shell=zsh") },
   { main_mod .. " + R", exec(menu) },
   { main_mod .. " + SHIFT + E", exec(file_manager) },
   { main_mod .. " + SHIFT + Q", hl.dsp.window.close() },
@@ -174,6 +173,8 @@ bind_all({
   { main_mod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }) },
   { main_mod .. " + Escape", hl.dsp.workspace.toggle_special("escape") },
   { main_mod .. " + SHIFT + Escape", hl.dsp.window.move({ workspace = "special:escape" }) },
+  { main_mod .. " + End", hl.dsp.workspace.toggle_special("privacy") },
+  { main_mod .. " + SHIFT + End", hl.dsp.window.move({ workspace = "special:privacy" }) },
 })
 
 -- Mouse bindings
@@ -230,10 +231,10 @@ bind("XF86AudioMute", exec("wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"), { lock
 bind("XF86AudioMicMute", exec("wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"), { locked = true, repeating = true })
 bind("XF86MonBrightnessUp", exec("brightnessctl s 10%+"), { locked = true, repeating = true })
 bind("XF86MonBrightnessDown", exec("brightnessctl s 10%-"), { locked = true, repeating = true })
-bind("XF86AudioNext", exec("playerctl next"), { locked = true })
-bind("XF86AudioPrev", exec("playerctl previous"), { locked = true })
-bind("XF86AudioPause", exec("playerctl play-pause"), { locked = true })
-bind("XF86AudioPlay", exec("playerctl play-pause"), { locked = true })
+bind("XF86AudioNext", exec("playerctl --player=spotify,mpd,%any next"), { locked = true })
+bind("XF86AudioPrev", exec("playerctl --player=spotify,mpd,%any previous"), { locked = true })
+bind("XF86AudioPause", exec("playerctl --player=spotify,mpd,%any play-pause"), { locked = true })
+bind("XF86AudioPlay", exec("playerctl --player=spotify,mpd,%any play-pause"), { locked = true })
 
 -- wl-kbptr
 local function kbptr_cmd(args)

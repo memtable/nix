@@ -14,24 +14,23 @@ local config = {
 
 local presets = {
   default = {
-    inherits = "default",
-    blur_strength = 0.34,
-    blur_iterations = 4,
-    refraction_strength = 0.5,
+    blur_strength = 12,
+    blur_iterations = 5,
+    refraction_strength = 3.0,
     chromatic_aberration = 0.02,
-    fresnel_strength = 0.25,
+    fresnel_strength = 0.0,
     specular_strength = 0.0,
     glass_opacity = 1.0,
-    edge_thickness = 0.015,
-    tint_color = 0x00000000,
-    lens_distortion = 0.8,
+    edge_thickness = 0.01,
+    tint_color = 0xffffff0d,
+    lens_distortion = 0.0,
     dark = {
-      brightness = 1.0,
+      brightness = 0.6,
       contrast = 1.0,
-      saturation = 1.4,
-      vibrancy = 0.15,
+      saturation = 1.5,
+      vibrancy = 3.0,
       vibrancy_darkness = 0.0,
-      adaptive_dim = 0.0,
+      adaptive_dim = 0.2,
       adaptive_boost = 0.0,
     },
     light = {
@@ -41,26 +40,59 @@ local presets = {
       vibrancy = 0.12,
       vibrancy_darkness = 0.0,
       adaptive_dim = 0.0,
-      adaptive_boost = 0.4,
+      adaptive_boost = 0.0,
     },
   },
+
+  heavy = {
+    inherits = "default",
+    blur_strength = 12,
+    blur_iterations = 5,
+    refraction_strength = 3.0,
+    chromatic_aberration = 0.02,
+    fresnel_strength = 0.0,
+    specular_strength = 0.0,
+    glass_opacity = 1.0,
+    edge_thickness = 0.01,
+    tint_color = 0xffffff0d,
+    lens_distortion = 0.0,
+    dark = {
+      brightness = 0.6,
+      contrast = 1.0,
+      saturation = 1.5,
+      vibrancy = 3.0,
+      vibrancy_darkness = 0.0,
+      adaptive_dim = 0.2,
+      adaptive_boost = 0.0,
+    },
+    light = {
+      brightness = 1.12,
+      contrast = 0.92,
+      saturation = 0.85,
+      vibrancy = 0.12,
+      vibrancy_darkness = 0.0,
+      adaptive_dim = 0.0,
+      adaptive_boost = 0.0,
+    },
+  },
+
   menus = {
     inherits = "default",
-    blur_strength = 1.4,
-    blur_iterations = 1,
-    refraction_strength = 1.0,
+    blur_strength = 3,
+    blur_iterations = 2,
+    refraction_strength = 3.0,
     chromatic_aberration = 0.20,
     fresnel_strength = 0.2,
     specular_strength = 0.5,
     glass_opacity = 1.0,
-    edge_thickness = 0.040,
+    edge_thickness = 0.01,
     tint_color = 0xffffff0d,
-    lens_distortion = 1,
+    lens_distortion = 0,
     dark = {
       brightness = 0.4,
       contrast = 1.0,
-      saturation = 1.0,
-      vibrancy = 0.5,
+      saturation = 2.0,
+      vibrancy = 2.5,
       vibrancy_darkness = 0.0,
       adaptive_dim = 0.0,
       adaptive_boost = 0.0,
@@ -79,9 +111,9 @@ local presets = {
   clear = {
     inherits = "default",
     glass_opacity = 1.0,
-    blur_strength = 0.25,
+    blur_strength = 1,
     blur_iterations = 2,
-    refraction_strength = 1.0,
+    refraction_strength = 5.0,
     chromatic_aberration = 0.02,
     s_curve = 0.0,
     -- fresnel_strength = 1.3,
@@ -131,46 +163,47 @@ local presets = {
 
   notification = {
     inherits = "clear",
-    blur_strength = 1.2,
-    blur_iterations = 2,
-    -- tint_color = 0x000000FF,
-    fresnel_strength = 0.2,
-    specular_strength = 0.5,
-    lens_distortion = 1.0,
-    refraction_strength = 0.8,
-    chromatic_aberration = 0.02,
-    edge_thickness = 0.09,
+    blur_strength = 2,
+    blur_iterations = 3,
+    tint_color = 0xFFFFFF1D,
+    fresnel_strength = 1,
+    specular_strength = 0,
+    lens_distortion = 0.0,
+    refraction_strength = 4.0,
+    chromatic_aberration = 0.0,
+    edge_thickness = 0.04,
     s_curve = 0.5,
     dark = {
       brightness = 1.0,
       contrast = 1.2,
-      saturation = 1.0,
+      saturation = 1.6,
       vibrancy = 0.0,
       vibrancy_darkness = 0.0,
       adaptive_dim = 0.22,
-      adaptive_boost = 0.1,
+      adaptive_boost = 0.0,
     },
   },
 
   darken = {
     inherits = "default",
-    blur_strength = 1,
-    blur_iterations = 2,
-    refraction_strength = 1.0,
+    blur_strength = 2,
+    blur_iterations = 7,
+    refraction_strength = 3,
     chromatic_aberration = 0.02,
     fresnel_strength = 0.0,
     specular_strength = 0.0,
     glass_opacity = 1.0,
-    edge_thickness = 0.045,
+    edge_thickness = 0.01,
     tint_color = 0x00000000,
-    lens_distortion = 0.1,
+    s_curve = 1.0,
+    lens_distortion = 0.0,
     dark = {
       brightness = 0.2,
       contrast = 1.0,
-      saturation = 1.3,
-      vibrancy = 0.0,
-      vibrancy_darkness = 0.0,
-      adaptive_dim = 0.2,
+      saturation = 2.5,
+      vibrancy = 2.5,
+      vibrancy_darkness = 1.5,
+      adaptive_dim = 0.0,
       adaptive_boost = 0.0,
     },
     light = {
@@ -289,6 +322,12 @@ local layers = {
     mask_threshold = 0.01,
     rounding  = 0,
   },
+  {
+    name = "quickshell:control-center",
+    preset = "clear",
+    mask_threshold = 0.01,
+    rounding = 24,
+  },
 }
 
 local function setup()
@@ -301,6 +340,7 @@ local function setup()
   hg.config(config)
 
   hg.preset("default", presets.default)
+  hg.preset("heavy", presets.heavy)
   hg.preset("menus", presets.menus)
   hg.preset("clear", presets.clear)
   hg.preset("clear_s_curve", presets.clear_s_curve)
@@ -324,6 +364,12 @@ local function setup()
     name = "terminal",
     match = { class = "^(kitty(-.*)?|com\\.mitchellh\\.ghostty|ghostty(-.*)?)$" },
     tag = "+hyprglass_preset_darken",
+  })
+
+  hl.window_rule({
+    name = "zen",
+    match = { class = "^(zen(-.*)?|zen)$" },
+    tag = "+hyprglass_preset_heavy",
   })
 end
 

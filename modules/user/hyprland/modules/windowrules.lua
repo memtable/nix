@@ -22,6 +22,14 @@ hl.workspace_rule({
 -- })
 
 hl.window_rule({
+  name = "auto-immediate-on-fullscreen",
+  match = {
+    fullscreen = true,
+  },
+  immediate = true,
+})
+
+hl.window_rule({
   name = "pinned",
   match = {
     pin = true,
@@ -133,7 +141,7 @@ hl.window_rule({
   rounding = 2,
   no_anim = true,
   min_size = { 485, 320 },
-  max_size = { 620, 700 },
+  -- max_size = { 720, 800 },
 })
 
 hl.window_rule({
@@ -147,7 +155,7 @@ hl.window_rule({
   no_focus = true,
   no_anim = true,
   no_blur = true,
-  no_shadow = true,
+  -- no_shadow = true,
   border_size = 0,
   rounding = 0,
 })
@@ -155,11 +163,19 @@ hl.window_rule({
 hl.window_rule({
   name = "special",
   match = {
-    class = "^(helium)$",
+    class = "^(google-chrome)$",
   },
   workspace = "special:magic silent",
   float = true,
   center = true,
+})
+
+hl.window_rule({
+  name = "privacy-rules",
+  match = {
+    workspace = "special:privacy",
+  },
+  no_screen_share = true,
 })
 
 hl.window_rule({

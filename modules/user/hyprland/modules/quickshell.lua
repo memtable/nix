@@ -35,6 +35,14 @@ hl.layer_rule({
 })
 
 hl.layer_rule({
+  name = "quickshell-control-center",
+  match = {
+    namespace = "^quickshell:control-center(-shadow)?$",
+  },
+  no_anim = true,
+})
+
+hl.layer_rule({
   name = "quickshell-notifications",
   match = {
     namespace = "^quickshell:notifications$",
